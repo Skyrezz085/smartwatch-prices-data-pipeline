@@ -1,0 +1,47 @@
+===========================================
+PREFACE
+===========================================
+This program aims to create tables and insert the dataset into a PostgreSQL database.
+
+===========================================
+URL DATASET
+===========================================
+Dataset URL: https://www.kaggle.com/datasets/rkiattisak/smart-watch-prices
+
+===========================================
+Data Definition Language Syntax
+===========================================
+Defines the structure of the `table_m3` table, specifying columns, data types, and constraints using `CREATE TABLE`.
+
+CREATE DATABASE postgres;
+\c postgres
+
+CREATE TABLE table_m3 (
+    brand VARCHAR(50),
+    model VARCHAR(50),
+    operating_system VARCHAR(50),
+    connectivity VARCHAR(100),
+    display_type VARCHAR(50),
+    display_size_inches FLOAT,
+    resolution VARCHAR(50),
+    water_resistance_meters INT,
+    battery_life_days INT,
+    heart_rate_monitor VARCHAR(3),
+    gps VARCHAR(3),
+    nfc VARCHAR(3),
+    price_usd VARCHAR(10)
+);
+
+===========================================
+Data Manipulation Language Syntax
+===========================================
+Inserts data from a CSV file into the `table_m3` table using `COPY`.
+
+COPY table_m3(
+    brand, model, operating_system, connectivity, display_type,
+    display_size_inches, resolution, water_resistance_meters,
+    battery_life_days, heart_rate_monitor, gps, nfc, price_usd
+)
+FROM 'C:\Users\syade\OneDrive\Documents\Milestone\raw_data.csv'
+DELIMITER ','
+CSV HEADER;
